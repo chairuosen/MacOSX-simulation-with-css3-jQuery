@@ -1,0 +1,5 @@
+*{margin:0;padding:0;border:none;list-style: none;text-decoration: none;vertical-align: bottom;}
+.search{display:inline-block;overflow:hidden;margin:300px;border-radius: 6px;box-shadow: 0 0 5px #73D7FD;}
+input[type=text]{width: 200px;height:20px;line-height: 16px;padding:5px;font-size: 16px;}
+input[type=submit]{background: -webkit-linear-gradient(#3699DB,#1F6FA5);color: #fff;width: 60px;height: 30px;}
+

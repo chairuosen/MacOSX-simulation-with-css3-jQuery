@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>test</title>
+<style>
+body{background: #fff;}
+*{margin:0;padding:0;border:0;}
+.wrap{width:300px;height:100px;position:fixed;top:20%;left:20%;}
+.bt-top{position:absolute;z-index:10;width:300px;height:60px;top:0;left:0;border-radius:10px;background: -webkit-linear-gradient(left,#c11c1a,#fb2424 50%,#c11c1a);
+	box-shadow: 0 0 3px 2px #ff4141 inset;overflow: hidden;}
+.top-cover{position:absolute;top:0;left:0;width:100%;height:60px;opacity: 0.1;
+	background:-webkit-radial-gradient(170px 450px,circle,transparent 430px,#fff 320px);}
+.top-highlight{position:absolute;bottom:0;left:0;width:100%;height:4px;
+	background: -webkit-radial-gradient(#fff,transparent 50%);}
+.bt-bt{position:absolute;z-index:5;width:300px;height:60px;top:12px;left:0;border-radius:10px;background: -webkit-linear-gradient(left,#6d0d0f 6px,#911918 15px,#911918 285px,#6d0d0f 294px);
+	box-shadow: 0 0 8px 2px #e42324 inset;}
+h1{position:absolute;top:0;left: 0;width: 100%;text-align: center;line-height: 60px;font-family: Helvetica;font-size:20px;color:#fff;font-weight:normal;text-shadow:0 2px 0 #900;}
+</style>
+</head>
+<body>
+<div class="wrap">
+	<div class="bt-top">
+		<div class="top-cover"></div>
+		<div class="top-highlight"></div>
+		<h1>My Button.</h1>
+	</div>
+	<div class="bt-bt">
+	</div>
+</div>
+</body>
+</html>

@@ -1,74 +1,512 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Mac OSX</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="css/style.4.css" />
+<script type="text/javascript" src="js/jq.min.js"></script>
+<script type="text/javascript" src="js/js.11.js"></script>
+</head>
+<body>
+<div class="wel"></div>
+<div class="login">
+	<div class="login_box">
+		<div class="avatar"><img src="img/lion.gif"/></div>
+		<p>柴若森</p>
+		<input type="password" value="">
+	</div>
+</div>
+<div class="wrap">
+	<div class="context_menu">
+		<ul>
+			<li id="open">打开</li>
+			<li id="autolist">自动排列</li>
+			<li id="refresh">刷新</li>
+			<li id="copy">复制</li>
+			<li id="paste">粘贴</li>
+			<li style="display:none;" id="del">删除</li>
+			<li class="about">属性</li>
+		</ul>
+	</div>
+	<div class="top_bar">
+		<div id="menu">
+    	<ul>
+    	<li class="apple">
+        	<a href="javascript:void(0);">Apple</a>
+            <ul class="sublist">
+            <li class="about">About This Mac</li>
+            <li>Software Updates...</li>
+            <li>App Store...</li>
+            <li class="divider"></li>
+            <li>System Preferences...</li>
+            <li>Dock
+            	<span class="arrow"></span>
+                <ul class="sublist-menu">
+                <li>Turn Hiding Off</li>
+                <li>Turn Magnification Off</li>
+                <li class="divider"></li>
+                <li>Position on Left</li>
+                <li>Position on Bottom</li>
+                <li>Position on Right</li>
+                <li class="divider"></li>
+                <li>Dock Preferences...</li>
+                </ul>
+            </li>
+            <li class="divider"></li>
+            <li>Recent Items
+            	<span class="arrow"></span>
+                <ul class="sublist-menu">
+                <li class="disable">Applications</li>
+                <li class="divider"></li>
+                <li class="disable">Documents</li>
+                <li class="divider"></li>
+                <li class="disable">Servers</li>
+                <li class="divider"></li>
+                <li>Clear Menu</li>
+                </ul>
+            </li>
+            <li class="divider"></li>
+            <li>Force Quit</li>
+            <li class="divider"></li>
+            <li>Sleep</li>
+            <li>Restart</li>
+            <li>Shut Down</li>
+            <li class="divider"></li>
+            <li>Log Out</li>
+            </ul>
+        </li>
+        <li class="here">
+        	<a href="javascript:void(0);">Finder</a>
+        	<ul class="sublist">
+            <li><a href="javascript:void(0);" data-rel="show">About Finder</a></li>
+            <li class="divider"></li>
+            <li>Preferences...</li>
+            <li class="divider"></li>
+            <li>Secure Empty Trash...</li>
+            <li class="divider"></li>
+            <li>Services
+            	<span class="arrow"></span>
+                <ul class="sublist-menu">
+                <li class="disable">No Services Apply</li>
+                <li>Services Preferences...</li>
+                </ul>
+            </li>
+            <li class="divider"></li>
+            <li>Hide Finder</li>
+            <li>Hide Others</li>
+            <li class="disable">Show All</li>
+            </ul>
+        </li>
+        <li>
+        	<a href="javascript:void(0);">File</a>   
+            <ul class="sublist">
+            <li>New Finder Window</li>
+            <li>New Folder</li>
+            <li class="disable">New Folder with Selection</li>
+            <li>New Smart Folder</li>
+            <li>New Burn Folder</li>
+            <li class="disable">Open</li>
+            <li class="disable">Open With
+            	<span class="arrow"></span>
+            </li>
+            <li class="disable">Print</li>
+            <li class="disable">Close Window</li>
+            <li class="divider"></li>
+            <li>Get Info</li>
+            <li class="divider"></li>
+            <li class="disable">Compress</li>
+            <li class="divider"></li>
+            <li class="disable">Duplicate</li>
+            <li class="disable">Make Alias</li>
+            <li class="disable">Quick Look</li>
+            <li class="disable">Show Original</li>
+            <li class="disable">Add to Sidebar</li>
+            <li class="divider"></li>
+            <li class="disable">Move to Trash</li>
+            <li class="disable">Eject</li>
+            <li>Burn "Desktop" to Disc...</li>
+            <li class="divider"></li>
+            <li>Find</li>
+            <li class="divider"></li>
+            <li class="disable">Label:</li>
+            </ul> 
+        </li>
+        <li>
+        	<a href="javascript:void(0);">Edit</a>
+        	<ul class="sublist">
+            <li class="disable">Undo</li>
+            <li class="disable">Redo</li>
+            <li class="divider"></li>
+            <li class="disable">Cut</li>
+            <li class="disable">Copy</li>
+            <li class="disable">Paste</li>
+            <li>Select All</li>
+            <li class="divider"></li>
+            <li>Show Clipboard</li>
+            <li class="divider"></li>
+            <li>Special Characters...</li>
+            </ul>
+        </li>
+        <li>
+        	<a href="javascript:void(0);">View</a>
+        	<ul class="sublist">
+            <li class="disable">as Icons</li>
+            <li class="disable">as List</li>
+            <li class="disable">as Columns</li>
+            <li class="disable">as Cover Flow</li>
+            <li class="divider"></li>
+            <li>Clean Up</li>
+            <li>Clean Up By
+            	<span class="arrow"></span>
+                <ul class="sublist-menu">
+                <li>Name</li>
+                <li>Kind</li>
+                <li>Date Modified</li>
+                <li>Date Created</li>
+                <li>Size</li>
+                <li>Label</li>
+                </ul>
+            </li>
+            <li>Sort By
+            	<span class="arrow"></span>
+                <ul class="sublist-menu">
+                <li>None</li>
+                <li class="divider"></li>
+                <li>Snap to Grid</li>
+                <li class="divider"></li>
+                <li>Name</li>
+                <li>Kind</li>
+                <li>Date Last Opened</li>
+                <li>Date Added</li>
+                <li>Date Modified</li>
+                <li>Date Created</li>
+                <li>Size</li>
+                <li>Label</li>
+                </ul>
+            </li>
+            <li class="divider"></li>
+            <li class="disable">Hide Path Bar</li>
+            <li class="disable">Hide Status Bar</li>
+            <li class="disable">Hide Sidebar</li>
+            <li class="divider"></li>
+            <li class="disable">Toolbar</li>
+            <li class="disable">Customize Toolbar...</li>
+            <li class="divider"></li>
+            <li>Show View Options...</li>
+            </ul>    
+        </li>
+        <li>
+        	<a href="javascript:void(0);">Go</a>
+        	<ul class="sublist">
+            <li class="disable">Back</li>
+            <li class="disable">Forward</li>
+            <li>Enclosing Folder</li>
+            <li class="divider"></li>
+            <li>All My Files</li>
+            <li>Documents</li>
+            <li>Desktop</li>
+            <li>Downloads</li>
+            <li>Home</li>
+            <li>Computer</li>
+            <li>AirDrop</li>
+            <li>Network</li>
+            <li>Applications</li>
+            <li>Utilities</li>
+            <li class="divider"></li>
+            <li>Recent Folders
+            	<span class="arrow"></span>
+                <ul class="sublist-menu">
+                <li>2012-01-10</li>
+                <li>Archieves</li>
+                <li>buildFiles</li>
+                <li>MyProjects</li>
+                <li>XCode_iPhone</li>
+                <li class="divider"></li>
+                <li>Clear Menu</li>
+                </ul>
+            </li>
+            <li class="divider"></li>
+            <li>Go to Folder...</li>
+            <li>Connect to Server...</li>
+            </ul>    
+        </li>
+        <li>
+        	<a href="javascript:void(0);">Window</a>
+         	<ul class="sublist">
+            <li class="disable">Minimize</li>
+            <li class="disable">Zoom</li>
+            <li class="disable">Cycle Through Windows</li>
+            <li class="divider"></li>
+            <li>Bring All to Front</li>
+            </ul>   
+        </li>
+        <li><a href="javascript:void(0);">Help</a></li>
+        </ul>
+	</div>
+		<div class="time">test2013</div>
+	</div>
+	<div class="desktop_bg">
+	</div>
+	<div class="icons">
+	<p style="float:right;padding-right:10px;text-align:right;font-size:12px;color:#fff;">本页图标可以刷新,全选，框选，多选，拖拽，复制，粘贴，删除，Ctrl+c&v&a,Del<br/>桌面图标可以自动排列，自动对齐到网格，拖拽时原地吸附效果<br/>Dock栏自动隐藏于屏幕下方，LaunchPad可拖拽，Alt+z可切换任务。<br/>
+	有CSS3特效的内嵌网页打开时会导致页面渲染有残影，<br/>属于浏览器BUG暂无法解决</p>
+		<!--<div class="icon" style="top:0px;left:0px;" ><a><div><img src="img/logo.png"/></div><h4>Google Chrome</h4></a></div>-->
+		<div class="icon" data-type="safari" style="top:150px;left:600px;" ><a><div><img src="img/safari.png"/></div><h4>Safari</h4></a></div>
+		<div class="icon" data-type="finder" style="top:150px;left:750px;" ><a><div><img src="img/finder.png"/></div><h4>Finder</h4></a></div>
+		<div class="icon" data-type="works" data-work="1" data-url="red_button.html" style="top:300px;left:150px;" ><a><div><img src="img/html.png"/></div><h4>CSS3按钮</h4></a></div>
+		<div class="icon" data-type="html1" data-work="1" data-url="/ap/index.html" style="top:300px;left:300px;" ><a><div><img src="img/html.png"/></div><h4>Aptana</h4></a></div>
+		<div class="icon" data-type="html2" data-work="1" data-url="/c/index.html" style="top:300px;left:450px;" ><a><div><img src="img/html.png"/></div><h4>Cubedroute</h4></a></div>
+        <div class="icon" data-type="html6" data-work="1" data-url="/work/index.html" style="top:300px;left:600px;" ><a><div><img src="img/html.png"/></div><h4>完达山</h4></a></div>
+        <div class="icon" data-type="html4" data-work="1" data-url="/week9/index.html" style="top:300px;left:750px;" ><a><div><img src="img/html.png"/></div><h4>Soccer</h4></a></div>
+		<div class="icon" data-type="html3" data-work="1" data-url="/cube1/index.html" style="top:300px;left:900px;" ><a><div><img src="img/html.png"/></div><h4>CSS3 3D Animation1</h4></a></div>	
+		<div class="icon" data-type="html5" data-work="1" data-url="/week9_test/index.html" style="top:300px;left:1050px;" ><a><div><img src="img/html.png"/></div><h4>CSS3 3D Animation2</h4></a></div>	
+		<div class="icon" data-type="html7" data-work="1" data-url="/cube/index.html" style="top:300px;left:1200px;" ><a><div><img src="img/html.png"/></div><h4>CSS3 3D Animation3</h4></a></div>
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Chairuosen.github.com : " />
+	</div>
+	<div class="desktop">
+		<div class="selector"></div>
+		<div class="win finder">
+			<div class="finder_top">
+				<h2>Finder</h2>
+				<div class="finder_btn">
+					<a class="red"></a>
+					<a class="yellow"></a>
+					<a class="green"></a>
+				</div>
+				
+				<div class="finder_top_main">
+					<div class="next_back ca">
+						<a class="back"><span></span></a>
+						<a class="next"><span></span></a>
+					</div>
+					<div class="finder_top_tab">
+						<ul class="btns ca">
+							<li class="current"><a></a></li>
+							<li><a></a></li>
+							<li><a></a></li>
+						</ul>
+					</div>
+					<div class="search"><input type="text"/></div>
+				</div>
+			</div>
+			<div class="finder_main">
+				<div class="finder_sidebar">
+					<h4>FAVORITES</h4>
+					<ul>
+						<li>All MY Files</li>
+						<li>AirDrop</li>
+						<li>Applications</li>
+						<li>Desktop</li>
+						<li>Documents</li>
+						<li>Downloads</li>
+						<li>Movies</li>
+						<li>Music</li>
+						<li>Pictures</li>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+					</ul>
+				</div>
+				<div class="finder_content">
+					<div class="type1" style="display:block;">
+						<ul class="ca">
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+						</ul>
+					</div>
+					<div class="type2">
+						<ul class="ca">
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+						</ul>
+					</div>
+					<div class="type3">
+						<ul class="ca">
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+							<li><img src="img/8.jpg"><h5>google.jpg</h5></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="right_ajust"></div>
+			<div class="bottom_ajust"></div>
+		</div>
+		<div class="win safari" style="display:none;">
+			<div class="safari_top">
+				<h2>Safari</h2>
+				<div class="safari_btn">
+					<a class="red"></a>
+					<a class="yellow"></a>
+					<a class="green"></a>
+				</div>
+				
+				<div class="safari_top_main">
+					<div class="next_back ca">
+						<a class="back" ><span></span></a>
+						<a class="next" ><span></span></a>
+					</div>
+					<div class="address">
+						<div><input class="adr_url" type="text" value="" /></div>
+					</div>
+				</div>
+			</div>
+			<div class="safari_main">
+			<iframe id="frame1" name="frame1" width="100%" height="100%" src=""></iframe>
+			<div class="safari_cover"></div>
+			</div>
+			<div class="right_ajust"></div>
+			<div class="bottom_ajust"></div>
+		</div><!-- safari-->
+	</div><!--desktop-->
+	<div class="launch_pad">
+		<!--<div style="position:absolute;top:30px;left:0;text-align:center;width:100%;color:javascript:void(0);fff;">Drag Me</div>-->
+		<div class="all_pad ca">
+			<div class="pad_1">
+				<ul class="ca">
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+				</ul>
+			</div>
+			<div class="pad_2">
 
-    <title>Chairuosen.github.com</title>
-  </head>
-
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/chairuosen">View on GitHub</a>
-
-          <h1 id="project_title">Chairuosen.github.com</h1>
-          <h2 id="project_tagline"></h2>
-
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
-  </body>
+				<ul class="ca">
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+					<li><a><img src="img/logo.png"/><h4>Google Chrome</h4></a></li>
+				</ul>
+			</div>
+		</div>
+	</div><!--launchpad-->
+	<div class="taskman no-transition">
+		<div class="taskman_inner">
+			<div class="cover"></div>
+			<div class="taskman_margin"></div>
+		</div>
+	</div>
+	<div class="dock_div">
+		<div class="dock">
+			
+			<ul class="ca">
+				<li class="finder_dock"><a></a></li>
+				<li class="launch_dock"><a></a></li>
+				<li class="safari_dock"><a></a></li>
+				<li><a></a></li>
+				<li><a></a></li>
+				<li><a></a></li>
+				<li><a></a></li>
+				<li><a></a></li>
+				<li><a></a></li>
+				<li><a></a></li>
+				<li><a></a></li>
+				<li><a></a></li>
+				<div class="dock_bg"></div>			
+			</ul>
+		</div>
+	</div>
+</div>
+	<div class="info_div">
+		<div style="position:absolute;top:45%;left:0;height:0;width:100%;">
+			<div class="info"></div>
+		</div>
+	</div>
+</body>
 </html>

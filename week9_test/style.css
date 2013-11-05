@@ -1,0 +1,40 @@
+html,body{height:100%;}
+body{}
+.boxes{position:relative;width: 400px;height:300px;margin: 100px auto;}
+.box1{position:absolute;top:0;left:0;width: 400px;height:300px;border:8px solid #111;background: #8EC9DB;opacity: 0.3;border-radius: 20px;
+	-webkit-animation:'rotate_box1' 20s linear 0s infinite normal;
+}
+.box2{position:absolute;top:20px;left:20px;width: 360px;height:260px;border:4px solid #222;background: #8EC9DB;opacity: 0.3;border-radius: 10px;
+	-webkit-animation:'rotate_box2' 20s linear 0s infinite normal;}
+.box3{position:absolute;top:40px;left:40px;width: 320px;height:220px;border:2px solid #333;background: #8EC9DB;opacity: 0.3;border-radius: 5px;
+	-webkit-animation:'rotate_box3' 20s linear 0s infinite normal;}
+.hale{z-index:-1;position: absolute;top:-50px;left:-100px;width: 600px;height: 600px;
+	-webkit-animation:'hale' 30s linear 0s infinite normal;}
+.the_hale{padding:10px;display:inline-block;background: -webkit-linear-gradient(left,#fff 50%,transparent 50%),-webkit-linear-gradient(#76DEF8,#fff);border-radius: 999px;
+-webkit-animation:'hale_rotate' 5s linear 0s infinite normal;
+-webkit-mask:-webkit-radial-gradient(#000 90%,#fff 90%);}
+.white{width: 800px;height:800px;background: #fff;border-radius:999px;}
+
+
+
+
+@-webkit-keyframes 'rotate_box1'{
+	0%{-webkit-transform:perspective(500px) rotateY(0deg);}
+	100%{-webkit-transform:perspective(500px) rotateY(360deg);}
+}
+@-webkit-keyframes 'rotate_box2'{
+	0%{-webkit-transform:perspective(500px) rotateY(0deg) translateZ(-40px);}
+	100%{-webkit-transform:perspective(500px) rotateY(360deg) translateZ(-40px);}
+}
+@-webkit-keyframes 'rotate_box3'{
+	0%{-webkit-transform:perspective(500px) rotateY(0deg) translateZ(-80px);}
+	100%{-webkit-transform:perspective(500px) rotateY(360deg) translateZ(-80px);}
+}
+@-webkit-keyframes 'hale'{
+	0%{-webkit-transform: perspective(200px) rotateY(0deg) rotateX(60deg);}
+	100%{-webkit-transform: perspective(200px) rotateY(360deg) rotateX(60deg);}
+}
+@-webkit-keyframes 'hale_rotate'{
+	0%{-webkit-transform: rotate(0deg) ;}
+	100%{-webkit-transform: rotate(-360deg);}
+}

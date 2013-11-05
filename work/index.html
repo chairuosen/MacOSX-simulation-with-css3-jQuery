@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>完达山</title>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/animate.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.stellar.min.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="js/waypoints.min.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function ($) {
+
+    $(".nav>li>a").each(function(){
+		var sec = $(this).clone();
+		$(this).after(sec);
+	});
+
+
+
+    $('body').stellar({});
+
+
+    wh = $(window).height();
+    bottle_bottom = wh - 560; 
+    more_bottom = bottle_bottom - 100;
+    $('#bottle').css({bottom:bottle_bottom});
+	$('.footer-gray a').css({bottom:more_bottom});
+    $('.footer-inner').css({height:wh});
+
+    var links = $('.navigation').find('li');
+    slide = $('.slide');
+    button = $('.button');
+    mywindow = $(window);
+    htmlbody = $('html,body');
+
+    slide.waypoint(function (event, direction) {
+
+        dataslide = $(this).attr('data-slide');
+
+        if (direction === 'down') {
+            $('.navigation li[data-slide="' + dataslide + '"]').addClass('active').prev().removeClass('active');
+			
+			$('.navigation li[data-slide="1"]').removeClass('active');
+			
+        }
+        else {
+            $('.navigation li[data-slide="' + dataslide + '"]').addClass('active').next().removeClass('active');
+        }
+
+    });
+ 
+    mywindow.scroll(function () {
+        if (mywindow.scrollTop() == 0) {
+            $('.navigation li[data-slide="1"]').addClass('active');
+            $('.navigation li[data-slide="2"]').removeClass('active');
+        }
+    });
+
+	function goToByScroll(dataslide) {
+		var goal = $('.slide[data-slide="' + dataslide + '"]').offset().top;
+		if (mywindow.scrollTop()<goal) {
+			var goalPx = goal + 5;
+		} else {
+			var goalPx = goal - 1;
+		}
+        htmlbody.animate({
+            scrollTop: goalPx
+        }, 2000, 'easeInOutQuint');
+    }
+
+    function allplay(dataslide) {
+		var goal = $('.slide[data-slide="' + dataslide + '"]').offset().top;
+		goalPx=goal;
+        htmlbody.animate({
+            scrollTop: goalPx
+        }, 10000,'easeInOutSine');
+    }
+
+    links.click(function (e) {
+        e.preventDefault();
+        dataslide = $(this).attr('data-slide');
+        goToByScroll(dataslide);
+    });
+
+    button.click(function (e) {
+        e.preventDefault();
+        dataslide = $(this).attr('data-slide');
+        allplay(dataslide);
+
+    });
+
+});
+
+</script>
+
+</head>
+<body id="index">
+<div class="navigation">
+	<ul>
+		<li data-slide="1">TOP</li>
+		<li data-slide="2">1</li>
+		<li data-slide="3">2</li>
+		<li data-slide="4">3</li>
+		<li data-slide="5">4</li>
+	</ul>
+</div>
+<div id="header"  class="slide" data-slide="1">
+<div class="header-inner">
+	<div class="header-top">
+		<div class="header-top-inner ca">
+			<div class="logo">
+				<h1><a href="index.html">完达山</a></h1>
+			</div>
+			<div class="logoinfo">专注优质牛奶30年</div>
+			<ul class="nav ca">
+				<li class="active"><a href="index.html">首页</a></li>
+				<li><a href="news.html">新闻</a></li>
+				<li><a href="product.html">产品</a></li>
+				<li><a href="#">关于</a></li>
+				<li><a href="#">联系</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="ss">
+	<div class="sun">
+		<div class="sun_inner"></div>
+	</div>
+	<div class="sunshine">
+		<div class="shine_inner">
+			<div class="shine shine1"></div>
+			<div class="shine shine2"></div>
+			<div class="shine shine3"></div>
+			<div class="shine shine4"></div>
+			<div class="shine shine5"></div>
+			<div class="shine shine6"></div>
+			<div class="shine shine7"></div>
+			<div class="shine shine8"></div>
+			<div class="shine shine9"></div>
+			<div class="shine shine10"></div>
+			<div class="shine shine11"></div>
+			<div class="shine shine12"></div>
+			<div class="shine shine13"></div>
+			<div class="shine shine14"></div>
+			<div class="shine shine15"></div>
+			<div class="shine shine16"></div>
+			<div class="shine shine17"></div>
+			<div class="shine shine18"></div>
+
+		</div>
+	</div>
+	</div>
+
+	<div class="ad">
+	<div class="ad-inner">
+	<h1>质量好，才是真的好！</h1>
+	<div class="header-bottle">
+	</div>
+	</div>
+	</div>
+	<div class="cao">
+	</div>
+	<div class="bigniu">
+		<div class="niu1">
+		</div>
+	</div>
+	<div class="niu niu2">
+	</div>
+	<div class="niu niu3">
+	</div>
+	<div class="niu niu4">
+	</div>
+	<div class="niu niu5">
+	</div>
+
+
+</div>
+</div>
+
+
+<div id="milk"><div class="themilk"></div></div>
+
+<div id="main">
+<div class="main-inner">
+	<div class="top-button">
+		<a class="button" title="Play" data-slide="5"></a>
+	</div>
+	<div id="part1" data-slide="2" class="slide">
+	</div>
+	<div id="part2" data-slide="3" class="slide">
+	</div>
+	<div id="part3" data-slide="4" class="slide">
+	</div>
+	
+</div>
+</div>
+<div id="main-float">
+	<div id="naiyuan" >
+		<h1 data-stellar-ratio="0.4" data-stellar-horizontal-offset="0"
+		data-stellar-vertical-offset="800">奶源经过精心挑选
+		</h1>
+	</div>
+	<div id="guolv">
+		<div class="fifty"><div class="theguolv" ></div>
+		</div>
+		<h1 data-stellar-ratio="0.35" data-stellar-horizontal-offset="0"
+data-stellar-vertical-offset="700">40道严格工序检验
+		</h1>
+	</div>
+	<div id="renzheng">
+		<h1 data-stellar-ratio="0.45" data-stellar-horizontal-offset="0"
+data-stellar-vertical-offset="600">n项国际标准认证
+		</h1>
+		<div class="renzhengs" >
+			<ul>
+				<li>ISO-9001</li>
+				<li>国际认证1</li>
+				<li>国际认证2</li>
+				<li>国际认证3</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div id="footer">
+<div class="footer-inner slide" data-slide="5">
+	<h2>我们 努力做到完美</h2>
+	
+</div>
+</div>
+<div id="bottle">
+		<div class="thebottle">
+		</div>
+	</div>
+	<div class="footer-gray">
+		<a href="product.html">了解更多</a>
+	</div>
+</body>
+</html>
