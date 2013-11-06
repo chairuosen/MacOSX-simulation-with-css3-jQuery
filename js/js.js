@@ -30,18 +30,18 @@ $(document).ready(function(){
 	var _icon_default=$(".icons").html();//初始图标状态存一份备用
 	//桌面刷新
 	$("#refresh").click(function(){
-		all_clear();
+		allClear();
 		console.info(_icon_default)
 		$(".icons").empty().append(_icon_default);
 		setTimeout(function(){
-			icon_reg(0,0);
+			iconReg(0,0);
 			roll();
 		},1)
 	});
 	//桌面自动左对齐
 	$("#autolist").click(function(){
-		all_clear()
-		icon_reg(1,1);
+		allClear()
+		iconReg(1,1);
 	});
 	$(".launch_pad,.finder,.taskman").hide();
 	var win_width=$(window).width();
@@ -231,7 +231,8 @@ $(document).ready(function(){
 		$(".finder_content div").hide();
 		$(".finder_content div:eq("+id+")").show();
 	});
-	function safari_url(){
+	//同步safari地址栏
+	function safariUrl(){
 		if (!_focus){
 			var test_url=$("#frame1").attr("src");
 			$(".address input").val(test_url);
@@ -249,19 +250,22 @@ $(document).ready(function(){
 		$(".info_div").show();
 		$(".wrap").css("-webkit-filter","blur(3px) saturate(1.5) ");
 	});
-	$(window).bind("contextmenu",function(e){return false;})
-
-	$(".desktop_bg").mouseup(function(e){
+	//绑定右键菜单
+	$(window).bind("contextmenu",function(e){
+		checkAll()
 		var start_x=e.clientX;
 		var start_y=e.clientY;
+		if(start_y>20){
+			$(".context_menu").show().css({"top":start_y+1,"left":start_x});
+		}
+		return false;
+	})
+
+	$(".desktop_bg").mouseup(function(e){
 		$(".icon").removeClass("selected");
 		$("#del").hide();
-		$(".context_menu>ul>li:eq(3)").removeClass("copy");
-		if(e.which==3){
-			$(".context_menu").show().css({"top":start_y+2,"left":start_x});
-		}
-
 	});
+	//图标框选
 	var po_y,po_x,box_height,box_width;
 	$(".desktop_bg").mousedown(function(e){
 		if(e.which==1){$(".icon").removeClass("selected")}
@@ -287,12 +291,14 @@ $(document).ready(function(){
 			}
 			//console.log(start_x+","+start_y+";"+x_change+","+y_change+","+po_x+","+po_y+","+box_width+","+box_height)
 			if(e.which==1){
+				//选框出现
 			$(".selector").show().css({"top":po_y,"left":po_x}).height(box_height).width(box_width);
 
 				min_x=po_x;
 				max_x=po_x+box_width;
 				min_y=po_y;
 				max_y=po_y+box_height;
+				//判断图标被选与否
 				$(".icon").each(function(){
 					if (
 						parseInt($(this).css("top"))+75<max_y
@@ -308,15 +314,10 @@ $(document).ready(function(){
 						$(this).removeClass("selected")
 					};
 				});
-
-
-
-
-
-
 			}
 		})
 	});
+	//日期1位变2位
 	function toTwo(x){
 		x=""+x;
 		if (x.length==1) {
@@ -324,6 +325,7 @@ $(document).ready(function(){
 		}else{return x;}
 		;
 	}
+	//星期变汉字
 	function toWeek(x){
 
 		if(x==1){x="一"}
@@ -336,6 +338,7 @@ $(document).ready(function(){
 		return x;
 
 	}
+	//获取时间
 	function time(){
 
 		var _time= new Date();
@@ -368,7 +371,7 @@ $(document).ready(function(){
 		}
 	});
 
-
+	//safari地址栏功能
 	$(".address input").focus(function(){
 		var _this=$(this);
 		_this.keydown(function(event){
@@ -376,6 +379,7 @@ $(document).ready(function(){
 				_this.blur();
 				var next_url=""+_this.val();
 				//console.log(next_url)
+				//前缀补全
 				if(next_url.substring(0,7)=="http://"){
 				}else if(next_url.substring(0,7)=="file://"){}
 				else{
@@ -386,6 +390,7 @@ $(document).ready(function(){
 			}
 		});				
 	})
+	//登录界面
 	$(".login_box input").focus(function(){
 		var _this=$(this);
 		_this.keydown(function(event){
@@ -398,29 +403,38 @@ $(document).ready(function(){
 			}
 		});				
 	})
-	
 
 	var now_icon,copyed_icon,copyed_name,copyed_logo,copyed_type,copyed_works,copyed_url;
-	
+	//图标功能集合
 	function roll(){
 		$(".icon").unbind("mousedown").unbind("mouseup").unbind("mousemove").unbind("click");
 
 		$(".icon").click(function(){
 
 			timestamp_now=(new Date()).valueOf();
-
+			//判断双击
 			v=timestamp_now-timestamp;
 			if(v<200){
 				var _type="."+$(this).data("type")+"_dock"
 				var _work=$(this).data("work")
+				//判断类型，是作品链接还是桌面程序
 				if(_work!="1"){
 					$(_type).click();
 				}else{
 					var _url=$(this).data("url")
 					$(".safari").show();
 					setTimeout(function(){
+						//判断连接类型，相对还是绝对
 						if(_url.substring(0,1)=="/"){
-							_url=document.location.href+_url.replace("/","")
+							//判断当前地址结尾有无index.html
+							_indexhtml=document.location.href.split("/").slice(-1)[0]
+							console.log(_indexhtml)
+							if(_indexhtml){
+								_href=document.location.href.replace("index.html","")
+							}else{
+								_href=document.location.href
+							}
+							_url=_href+_url.replace("/","")
 						}
 						$("#frame1").attr("src",_url);
 					},10)
@@ -432,27 +446,26 @@ $(document).ready(function(){
 
 		var po_x,po_y,po_x2,po_y2,_this;
 		$(".icon").mousedown(function(e){
-
+			//当前图标层级最上
 			$(this).css("z-index","99999");
 			var start_x=e.clientX;
 			var start_y=e.clientY;
 			//$(".context_menu>ul>li:eq(2)").addClass("copy");
-			
+			//图标右键菜单时被选
 			if((ctrl==false)&&(e.which!=3)){
-				
 					$(".icon").removeClass("selected");
 				
 			}
 			
 			$(this).addClass("selected");
-			
+			//可删除
 			$("#del").show();
-			_select();
-			if(e.which==3){
-				$(".context_menu").show().css({"top":start_y+2,"left":start_x});
-			}
+			selectIcon();
+			//if(e.which==3){
+				//$(".context_menu").show().css({"top":start_y+2,"left":start_x});
+			//}
 
-			
+			//桌面图标按住拖动
 			if(e.which==1){
 				_this=$(this);
 
@@ -468,10 +481,12 @@ $(document).ready(function(){
 				$(window).mousemove(function(e){
 					//if((ctrl==false)&&(e.which!=3)){$(".icon").removeClass("selected");}
 					$("#del").hide();
+					//判断图标拖动时位置
 					dx=e.clientX-down_x;
 					dy=e.clientY-down_y;
 					po_x2=po_x+dx;
 					po_y2=po_y+dy;
+					//图标吸附
 					if(Math.abs(dx)>20||Math.abs(dy)>20){
 						_this.removeClass("selected");
 						_this.css({"top":po_y2,"left":po_x2});
@@ -486,9 +501,10 @@ $(document).ready(function(){
 		});
 			
 			$(".icon").mouseup(function(e){
+				//当前图标恢复层级
 				$(this).css("z-index","0");
 				if(e.which==1){
-
+					//拖动结束后对齐到网格
 					var p=setPosition(po_x2,po_y2,150,150)
 					var px=p.x;
 					var py=p.y;
@@ -502,7 +518,8 @@ $(document).ready(function(){
 				//console.log("=================",num++,"================")
 			});
 	}
-	function icon_reg(x,y){
+	//注册所有图标位置
+	function iconReg(x,y){
 		var _x=x;
 		var _y=y;
 		$(".icon").each(function(){
@@ -518,11 +535,12 @@ $(document).ready(function(){
 		});
 	}
 	setTimeout(function(){
-		icon_reg()
+		iconReg()
 	},0)	
 	roll();
 	var ctrl=false;
-	function _select(){
+	//图标相关的按键功能
+	function selectIcon(){
 		$(window).unbind("keydown").unbind("keyup");
 		var v=false,a=false,copytime=(new Date()).valueOf(),alt=false,Z=false;
 		$(window).keydown(function(e){
@@ -550,32 +568,29 @@ $(document).ready(function(){
 			}else if(e.keyCode==13){
 				$("#open").click();
 			}
+			//粘贴长按时次数限制
 			if ((copytime!=(new Date()).valueOf()>1000)&&(ctrl&&v)) {
 				//console.log("ctrl+v")
 				
 				if(copytime!=(new Date()).valueOf()){
 					start_x=0;
 					start_y=0;
-					_paste(start_x,start_y);	
+					pasteIcon(start_x,start_y);	
 				}
 			};
 			if(ctrl&&a){
 				$(".icon").addClass("selected")
 				return false;
 			}
-			if(alt){
-				if(Z){
-					if(t){
-
-						$(".icons,.desktop").hide();
-						copyWinToTask()
-						setTaskmanCss()
-						$(".taskman").fadeIn(300);
-						t=false;
-					}else{
-						_task_change()
-					}
-				}
+			//alt+z 任务切换
+			if(alt&&Z&&t){
+				$(".icons,.desktop").hide();
+				copyWinToTask()
+				setTaskmanCss()
+				$(".taskman").fadeIn(300);
+				t=false;
+			}else if(alt&&Z&&!t){
+				taskChange();
 			}
 			
 		});
@@ -604,7 +619,7 @@ $(document).ready(function(){
 				}
 				$(".taskman").fadeOut(100,function(){
 					$(".icons,.desktop").show();
-					_window_change();
+					windowChange();
 					$(".taskman_margin").empty();
 					 
 				});
@@ -616,7 +631,8 @@ $(document).ready(function(){
 			}
 		});
 	}
-	_select();
+	selectIcon();
+	//删除图标
 	$("#del").click(function(){
 		if($(this).hasClass("del")){
 			if(confirm("确定删除此文件?")){
@@ -638,15 +654,15 @@ $(document).ready(function(){
 		
 	})
 
-
+	//给图标设定位置 ，输入当前坐标X,Y,网格高宽width,height，输出合适坐标x,y
 	function setPosition(x,y,width,height){
 		//console.log("22222222222222222222",x,y,width,height)
-		if(x%width<=width/2){
+		if(x%width<=width/2){//判断x轴网格
 			px=(parseInt(x/width))*width;
 		}else{
 			px=(parseInt(x/width)+1)*width;
 		}
-		if(y%height<=height/2){
+		if(y%height<=height/2){//判断y轴网格
 			py=(parseInt(y/height))*height;
 		}else{
 			py=(parseInt(y/height)+1)*height;
@@ -661,18 +677,21 @@ $(document).ready(function(){
 			y:yy
 		}
 	}
+	//放置被复制信息的空数组，1维
 	var _copy= new Array();
+	//图标复制
 	$("#copy").click(function(){
 		if($(this).hasClass("copy")){
 
 			console.warn("=====================COPY BEGIN===================")
 			_copy= new Array();
 			for(var i=0;i<$(".selected").length;i++)
-			{
+			{	
 				now_icon=$(".selected:eq("+i+")");
 				copyed_name=now_icon.find("h4").text();
 				copyed_logo=now_icon.find("img").attr("src");
 				copyed_type=now_icon.data("type");
+				//不同图标不同信息
 				if(now_icon.data("work")=="1"){
 					copyed_works=true;
 					copyed_url=now_icon.data("url")
@@ -680,7 +699,7 @@ $(document).ready(function(){
 					copyed_works=false;
 					copyed_url=""
 				}
-			
+				//记录信息
 				_copy[i*10+1]=copyed_name
 				_copy[i*10+2]=copyed_logo
 				_copy[i*10+3]=copyed_type
@@ -702,39 +721,35 @@ $(document).ready(function(){
 		
 
 	});
-	
+	//右键粘贴
 	$("#paste").click(function(e){
 		start_x=e.clientX||window.event.clientX||0;
 		start_y=e.clientY||window.event.clientY||0;
-		_paste(start_x,start_y);		
+		pasteIcon(start_x,start_y);		
 	});
+	//右键打开
 	$("#open").click(function(){
 		$(".selected").each(function(){
+			//模拟双击
 			var _this=$(this)
-			var _type="."+$(this).data("type")+"_dock"
-			var _work=$(this).data("work")
-				if(_work!="1"){
-					$(_type).click();
-				}else{
-					var _url=$(this).data("url")
-					$(".safari").show();
-					setTimeout(function(){
-						if(_url.substring(0,1)=="/"){
-							_url=document.location.href.replace("/index.html","")+_url
-						}
-						$("#frame1").attr("src",_url);
-					},10)
-				}
+			_this.click();
+			//console.log("1-click")
+			setTimeout(function(){
+				_this.click();
+				//console.log("2-click")
+			},100)
 		});
 		$(".icon").removeClass("selected")
 	})
 	var start_x=0,start_y=0;
-	function _paste(start_x,start_y){
+	//粘贴图标
+	function pasteIcon(start_x,start_y){
 		timestamp_now=(new Date()).valueOf();
+		//长按检测
 		if(timestamp_now-timestamp>1000&&$("#paste").hasClass("paste"))
 		{	
 			$(".icon").removeClass("selected");
-		
+			//按顺序输出图标
 			for(var i=1;i<(parseInt((_copy.length)/10)+2);i++)
 			{	
 				timestamp=timestamp_now
@@ -751,9 +766,9 @@ $(document).ready(function(){
 				console.warn("ALL:",_copy,"i:",i)
 				console.warn("paste:",_copy[(i-1)*10+1],_copy[(i-1)*10+2],_copy[(i-1)*10+3],_copy[(i-1)*10+4],_copy[(i-1)*10+5])
 				var n=$(".icon[data-type="+copyed_type+"]").length;
-				var the_paste
+				var thepasteIcon
 				if (copyed_works) {
-					the_paste="<div class='icon selected' data-type='"
+					thepasteIcon="<div class='icon selected' data-type='"
 					+copyed_type
 					+"'"
 					+" data-work='"
@@ -773,7 +788,7 @@ $(document).ready(function(){
 					+n
 					+")</h4></a></div>"
 				}else{
-					the_paste="<div class='icon selected' data-type='"
+					thepasteIcon="<div class='icon selected' data-type='"
 					+copyed_type
 					+"' style='top:"
 					+ py
@@ -788,21 +803,21 @@ $(document).ready(function(){
 					+")</h4></a></div>"
 				}
 				
-
-				
-				$(".icons").append(the_paste);
-
+				$(".icons").append(thepasteIcon);
+				//图标位置注册
 				aaa=toFour(px)+""+toFour(py);
 				fx[aaa]=1;
 				console.warn("====================paste END("+ num++ +")==================")
 			}
 		//$("#paste").removeClass("paste");
 		}
+		//粘贴后的图标重新绑定事件，可以用live，待改
 		setTimeout(roll,1);	
 		
 	}
 	var num=1;
 	var fx= new Array()
+	//坐标变成4位
 	function toFour(i){
 		if(i==0){i="0000"}
 		else{
@@ -815,6 +830,7 @@ $(document).ready(function(){
 		//return parseInt(i);
 		return i;
 	}
+	//判断此位置可否放置
 	function isItOK(x,y){
 		//console.log("44444444444444444444")
 		var a=toFour(x)+""+toFour(y)
@@ -828,13 +844,15 @@ $(document).ready(function(){
 		}
 
 	}
+	//删除某位置标记
 	function clearXY(x,y){
 		var a=toFour(parseInt(x))+""+toFour(parseInt(y))
 		fx[a]=undefined;
 		//console.log("clear",x,y)
 		//console.log(a,fx[a])
 	}
-	function all_clear(){
+	//删除所有位置标记
+	function allClear(){
 		fx=new Array()
 		/*
 		$(".icon").each(function(){
@@ -844,6 +862,7 @@ $(document).ready(function(){
 		});
 		*/
 	}
+	//判断并设置图标位置，重复择向下
 	function setXY(x,y){
 		//console.log("3333333333333333333333")
 		var setx=x,sety=y;
@@ -877,6 +896,7 @@ $(document).ready(function(){
 
 		return{x:setx,y:sety}
 	}
+	//所有右键功能查询，待改
 	function checkAll(){
 		if($(".selected").length!=0){
 			$("#open").addClass("open");
@@ -889,14 +909,15 @@ $(document).ready(function(){
 			$("#del").removeClass("del");
 			$("#autolist,#refresh").show();
 		}
-		safari_url();
+		safariUrl();
 	}
-	setInterval(checkAll,1)
+	//setInterval(checkAll,1)
 	
 
 	//TASK MAN]
-	var last_time=0;
-	function _task_change(){
+	//任务切换
+	var last_time=0;//长按检测
+	function taskChange(){
 		var task_num=$(".taskman_margin>div>div").length
 		now_time=(new Date()).valueOf();
 		if(now_time-last_time>300){
@@ -926,7 +947,8 @@ $(document).ready(function(){
 		}
 		
 	}
-	function _window_change(){
+	//任务切换后，按键抬起时任务窗口切换
+	function windowChange(){
 		var now_win_z=$(".taskman_margin>div>div").length
 		$(".taskman_margin>div>div").each(function(){
 			if(
@@ -942,6 +964,7 @@ $(document).ready(function(){
 		});
 
 	}
+	//设置任务切换的默认CSS样式
 	function setTaskmanCss(){
 		$(".taskman_margin>div>div").addClass("no-transition");
 		var task_num=$(".taskman_margin>div>div").length
@@ -956,6 +979,7 @@ $(document).ready(function(){
 			$(".taskman_margin>div>div").removeClass("no-transition");
 		},1)
 	}
+	//把桌面任务窗口复制到任务切换窗口
 	function copyWinToTask(){
 		if($(".taskman_margin").html()==""){
 			//console.log("COPY WIN SUCCESS")
